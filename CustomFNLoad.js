@@ -1,5 +1,5 @@
 function displayStuff(){
-alert("name of process associated is "+formulaire.INTERVENTIONS_EN_COURS_CONDITION.value);
+alert("Welcome ! name of process associated is "+formulaire.INTERVENTIONS_EN_COURS_CONDITION.value);
 } 
 window.onload = function(field){
 
