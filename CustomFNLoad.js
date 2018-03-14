@@ -1,20 +1,24 @@
-
-function displayStuff(){
-alert("Welcome ! name of process associated is "+formulaire.INTERVENTIONS_EN_COURS_CONDITION.value);
-} 
-var beginTime=performance.now();
-window.onload = function(){
-		displayStuff();
-		var fnTime = performance.now();
-		console.log("time taken to execute display function:"+(fntime - begintime)+"milliseconds");	
+var startDate = new Date();
+var startTime = startDate.getTime();
+window.onPreInitFunctions = function(){
+    console.log("executing preinit");
+	var difference = (new Date()).getTime() - startTime; 
+	console.warn("Preinit : "+difference); 
 };
+neocase.form.event.bind("preinit",onPreInitFunctions);
+window.onInitFunctions = function(){
+    console.log("executing init");
+	var difference = (new Date()).getTime() - startTime; 
+	console.warn("Init : "+difference); 
+};
+neocase.form.event.bind("init",onInitFunctions);
+window.onLoadCompleteFunctions = function(){
+    console.log("executing loadcomplete");
+	var difference = (new Date()).getTime() - startTime; 
+	console.warn("Loadcomplete : "+difference); 
+};
+neocase.form.event.bind("loadcomplete",onLoadCompleteFunctions);
 
-neocase.form.event.bind('preinit', onload);
-var preinitTime = performance.now();
-console.log("time taken to execute preinit event:"+(preinitTime - begintime)+"milliseconds");
-neocase.form.event.bind('init', onload);
-var initTime = performance.now();
-console.log("time taken to execute display event:"+(initTime - begintime)+"milliseconds");
-neocase.form.event.bind('loadcomplete', onload);
-var loadcompleteTime = performance.now();
-console.log("time taken to execute loadcomplete event:"+(loadcompleteTime - begintime)+"milliseconds");
+
+
+
